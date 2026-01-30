@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="Fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--EN-tete-->
+    <header>
+        <nav>
+            <h4>Myriam Lounes Ingénieur en  ....</h4>
+            <div class="nav-links">
+                <a href="#about">Qui suis-je ?</a>
+                <a href="#work">Mes projets</a>
+                <a href="#contact">On discute ?</a>
+            </div>
+        </nav>
+    </header>
+    <!--QUI JE SUIS -->
+    <section class="qui-suis-je">
+       <p>Diplômée en électronique des systèmes embarqués , avec une expérience dans l’analyse et l’exploitation des signaux biomédicaux 
+appliqués à des solutions innovantes  <br> Je suis motivée à relever des défis technologiques concrets
+dans les domaines de l’IoT, du biomédical ou de la robotique  comme détaillé dans <a href="CV_Myriam_Lounes.pdf" target="_blank" >MON CV</a></p> 
+    </section>
+
+    <!--MES PROJETS -->
+    <section class="Mes-projets">
+        <a href="./PROJET1-Prothese/prothese-emg.html" class="un-projet">
+           <h3>Prothèse bionique EMG</h3>
+         </a>
+        <a href="./PROJET2-control-de-temp/temperature.html" class="un-projet">
+            <h3>Controle de la température dans une serre agricole </h3>
+         </a>
+        <a href="./PROJET3-ARDUINO-en-serigraphie/serigraphie.html" class="un-projet">
+            <h3>Arduino en Sérigraphie : Double Vue Hardware & Software</h3>
+         </a>
+         <a href="./PROJET4-detecteur-d'obstacle-avec-yolo/yolo.html" class="un-projet">
+            <h3>Robot de détection d’obstacles en temps réel</h3>
+         </a>
+  </section>
+   
+
+   <!-- CONTACTE MOI-->
+    <section id="contact" class="contact">
+    <h2>On discute ?</h2>
+    <p>Vous pouvez m’écrire directement via ce formulaire ou me contacter sur LinkedIn
+       <a href="https://www.linkedin.com/in/myriam-lounes-064132224/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Myriam Lounes</a>.
+    </p>
+    
+    <form action="mailto:lounesmyriam210@example.com" method="POST" enctype="text/plain">
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Votre email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+
+        <button type="submit">Envoyer</button>
+    </form>
+</section>
+
+
+
+  <footer>
+    <p>© 2025 Myriam. Tous droits réservés.</p>
+  </footer>
+  
+</body>
+</html>
