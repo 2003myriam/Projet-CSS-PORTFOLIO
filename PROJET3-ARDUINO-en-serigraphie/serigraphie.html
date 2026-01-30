@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino en Sérigraphie</title>
+    <link rel="stylesheet" href="serigraphie.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- ----- HEADER ----- -->
+    <header class="hero">
+        <h1>Arduino en Sérigraphie : Double Vue Hardware & Software</h1>
+        <p>
+            Conception de deux cartes en sérigraphie illustrant l’Arduino : 
+            l’une dédiée aux aspects Software (logique et programmation), 
+            et l’autre aux aspects Hardware (schéma et composants).
+        </p>
+        <a href="../index.html" class="btn-retour">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </header>
+
+    <!-- ----- CONTENU PRINCIPAL ----- -->
+    <main class="contenu">
+
+        <!-- Résumé technique -->
+        <section class="resume-tech">
+            <h2><i class="fas fa-microchip"></i> Résumé technique</h2>
+            <ul>
+                <li><strong>Technologie utilisée :</strong> EasyEDA</li>
+                <li><strong>Domaine d’application :</strong> Support pédagogique et carte de référence visuelle, destinée à l’enseignement, à l’auto-apprentissage et à la vulgarisation électronique.</li>
+                <li><strong>Objectif du projet :</strong> Créer une carte sérigraphiée claire et intuitive rassemblant les informations essentielles sur l’Arduino.</li>
+            </ul>
+        </section>
+
+        <!-- Présentation -->
+        <section>
+            <h2><i class="fas fa-info-circle"></i> Présentation du projet</h2>
+            <p>
+                Le PCB en sérigraphie représente une technologie alliant esthétique et technique 
+                dans le design des circuits imprimés. Ce projet a pour objectif de concevoir une 
+                carte électronique avec EasyEDA, dédiée à ARTRONIC PCB. Il vise à offrir un support 
+                adapté aux débutants dans leurs projets Arduino, tout en restant un outil pratique 
+                pour les professionnels souhaitant accéder rapidement aux informations essentielles.
+            </p>
+        </section>
+
+        <!-- Résultat (cheat sheets) -->
+        <ol>
+            <li id="Partie">La Software Cheat Sheet</li>
+              <section class="features">
+                <h2><i class="fas fa-list"></i> Fonctionnalités logicielles de la carte</h2>
+                <ul>
+                    <li>Structure de programme</li>
+                    <li>Gestion et types des variables</li>
+                    <li>Entrées/Sorties digitales et analogiques</li>
+                    <li>Gestion du temps</li>
+                    <li>Mathématiques et trigonométrie</li>
+                    <li>Protocol de communication</li>
+                    <li>Structures de contrôle (boucle et conditions)</li>
+                    <li>Interruptions</li>
+                </ul>
+            </section>
+
+            <!-- Slider Software -->
+            <div class="slider" aria-label="Diaporama Software">
+                <!-- Radios -->
+                <input type="radio" name="slides" id="s1" checked>
+                <input type="radio" name="slides" id="s2">
+
+                <!-- Fenêtre d'affichage -->
+                <div class="viewport">
+                    <div class="slides">
+                        <figure class="slide">
+                            <img src="./IMAGE/soft1.png" alt="Software Cheat Sheet 1" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="./IMAGE/soft2.png" alt="Software Cheat Sheet 2" />
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Flèches -->
+                <label class="arrow to-s2 prev" for="s2" title="Précédent">
+                    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                </label>
+                <label class="arrow to-s2 next" for="s2" title="Suivant">
+                    <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+                </label>
+                <label class="arrow to-s1 prev" for="s1" title="Précédent">
+                    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                </label>
+                <label class="arrow to-s1 next" for="s1" title="Suivant">
+                    <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+                </label>
+
+                <!-- Dots -->
+                <div class="dots">
+                    <label class="dot" for="s1" title="Aller à l'image 1"></label>
+                    <label class="dot" for="s2" title="Aller à l'image 2"></label>
+                </div>
+            </div>
+          
+
+
+            <li id="Partie">La Hardware Cheat Sheet</li>
+        </ol>
+       <section class="features">
+            <h2><i class="fas fa-list"></i> Fonctionnalités logicielles de la carte</h2>
+            <ul>
+                <li>Brochage Arduino clairement indiqué</li>
+                <li>Schéma des broches principales (ATmega, I/O)</li>
+                <li>Raccourcis pour les formules et schémas électriques de base</li>
+                <li>Des exemples pratiques</li>
+                <li>Les symboles largement utilisés</li>
+            </ul>
+        </section>
+
+
+        <!-- Slider Hardware -->
+        <div class="slider-hw" aria-label="Diaporama Hardware">
+            <input type="radio" name="slides-hw" id="hw1" checked>
+            <input type="radio" name="slides-hw" id="hw2">
+
+            <div class="viewport-hw">
+                <div class="slides-hw">
+                    <figure class="slide-hw">
+                        <img src="./IMAGE/hardware 1.png" alt="Hardware Cheat Sheet 1" />
+                    </figure>
+                    <figure class="slide-hw">
+                        <img src="./IMAGE/hardware 2.png" alt="Hardware Cheat Sheet 2" />
+                    </figure>
+                </div>
+            </div>
+
+            <!-- Flèches -->
+            <label class="arrow-hw to-hw2 prev" for="hw2" title="Précédent">
+                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </label>
+            <label class="arrow-hw to-hw2 next" for="hw2" title="Suivant">
+                <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+            </label>
+            <label class="arrow-hw to-hw1 prev" for="hw1" title="Précédent">
+                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </label>
+            <label class="arrow-hw to-hw1 next" for="hw1" title="Suivant">
+                <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+            </label>
+
+            <!-- Dots -->
+            <div class="dots-hw">
+                <label class="dot-hw" for="hw1" title="Aller à l'image 1"></label>
+                <label class="dot-hw" for="hw2" title="Aller à l'image 2"></label>
+            </div>
+        </div>
+
+        <!-- Informations supplémentaires -->
+        <section class="resume-tech">
+            <h2><i class="fas fa-microchip"></i> Informations sur le projet</h2>
+            <ul>
+                <li><strong>Type de board :</strong> Rectangulaire avec coins arrondis</li>
+                <li><strong>Dimensions :</strong> Largeur 103 mm / Hauteur 100 mm</li>
+                <li><strong>Couleur de la carte :</strong> Noir</li>
+                <li><strong>Finition de surface :</strong> Or</li>
+                <li><strong>Épaisseur de la carte :</strong> 1.6 mm</li>
+                <li><strong>Largeur des pistes :</strong> 0.2 mm / 0.4 mm</li>
+                <li><strong>Taille des titres :</strong> 3 mm</li>
+                <li><strong>Taille de la sérigraphie (texte) :</strong> 2.2 mm</li>
+            </ul>
+        </section>
+
+        <!-- Vidéo -->
+        <h2>Vidéo récapitulative</h2>
+        <video controls>
+            <source src="./IMAGE/Vidéo.mp4" type="video/mp4">
+        </video>
+
+    </main>
+</body>
+</html>

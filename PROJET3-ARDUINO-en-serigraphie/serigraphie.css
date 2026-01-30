@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Edu+SA+Hand:wght@400..700&family=Gravitas+One&family=Playwrite+GB+J+Guides:ital@0;1&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+  background-color: #14213d;
+  color: white;
+   font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffff03;
+}
+
+h2 {
+  color: #ffff03;
+}
+
+p {
+  margin: 30px;
+}
+
+p strong {
+  color: #ffff03;
+}
+
+a {
+  color: #ffff03;
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ffff03;
+}
+
+#Partie {
+  color: #ffff03;
+  font-size: x-large;
+  cursor: default;
+}
+#Partie:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ffff03;
+}
+
+/* ===============================
+   CONTENEUR
+   =============================== */
+.contenu {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 1000px;
+  border-left: 5px solid transparent;
+  transition: border-color 0.4s ease;
+}
+section:hover {
+  border-color: #ffff03;
+}
+
+/* ===============================
+   HERO
+   =============================== */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(rgba(20, 33, 61, 0.9), rgba(20, 33, 61, 0.9)), 
+              url('header-bg.jpg') center/cover;
+}
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 18px;
+  color: #e0e0e0;
+}
+
+/* ===============================
+   BOUTON RETOUR
+   =============================== */
+.btn-retour {
+  position: absolute; /* mettre fixed si tu veux qu’il reste en scroll */
+  top: 10px;
+  left: 10px;
+  padding: 8px 16px;
+  border: 1px solid #ffff03;
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-retour:hover {
+  background-color: #ffff03;
+  color: #14213d;
+}
+
+/* ===============================
+   RÉSUMÉ TECHNIQUE
+   =============================== */
+.resume-tech {
+  background-color: #1f2a48;
+  padding: 20px;
+  margin: 20px auto;
+  border-left: 5px solid #ffff03;
+  max-width: 900px;
+  border-radius: 8px;
+}
+.resume-tech ul {
+  list-style: none;
+  padding: 0;
+}
+.resume-tech li {
+  margin-bottom: 8px;
+}
+
+/* ===============================
+   SLIDER SOFTWARE
+   =============================== */
+.slider, .slider-hw {
+  position: relative;
+  width: min(800px, 96vw);
+  margin: 0 auto;
+}
+.slider input, .slider-hw input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Fenêtre d’affichage */
+.viewport, .viewport-hw {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 56vw, 480px);
+  overflow: hidden;
+}
+
+/* Bande de slides */
+.slides, .slides-hw {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Chaque slide */
+.slide, .slide-hw {
+  width: 50%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.slide img, .slide-hw img {
+  max-width: 1000px;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+/* Navigation software */
+#s1:checked ~ .viewport .slides { transform: translateX(0%); }
+#s2:checked ~ .viewport .slides { transform: translateX(-50%); }
+
+/* Navigation hardware */
+#hw1:checked ~ .viewport-hw .slides-hw { transform: translateX(0%); }
+#hw2:checked ~ .viewport-hw .slides-hw { transform: translateX(-50%); }
+
+/* Flèches communes */
+.arrow, .arrow-hw {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(245, 249, 40, 0.5);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: background 0.3s;
+}
+.arrow:hover, .arrow-hw:hover {
+  background: rgba(0,0,0,0.8);
+}
+.arrow svg, .arrow-hw svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: white;
+  stroke-width: 2.2;
+}
+
+/* Placement flèches */
+.to-s2.prev, .to-hw2.prev { left: 10px; }
+.to-s2.next, .to-hw2.next { right: 10px; }
+.to-s1.prev, .to-hw1.prev { left: 10px; }
+.to-s1.next, .to-hw1.next { right: 10px; }
+
+/* Cacher flèches inutiles */
+#s1:checked ~ .to-s1 { display: none; }
+#s2:checked ~ .to-s2 { display: none; }
+#hw1:checked ~ .to-hw1 { display: none; }
+#hw2:checked ~ .to-hw2 { display: none; }
+
+/* Petits points */
+.dots, .dots-hw {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.dot, .dot-hw {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #394961;
+  cursor: pointer;
+}
+
+/* Sélection active */
+#s1:checked ~ .dots label[for=s1],
+#s2:checked ~ .dots label[for=s2],
+#hw1:checked ~ .dots-hw label[for=hw1],
+#hw2:checked ~ .dots-hw label[for=hw2] {
+  background: #fff;
+}
+
+/* ===============================
+   VIDÉO
+   =============================== */
+video {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: 400px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px #e0e068;
+}
