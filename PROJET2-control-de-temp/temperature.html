@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de la température dans une serre agricole</title>
+    <link rel="stylesheet" href="temperature.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ </head>
+<body>
+    <header class="hero">
+        <h1>Contrôle de la température dans une serre agricole intelligente</h1>
+        <p>Réalisation d'une carte électronique qui permet de contrôler la température d'une serre agricole  à l’aide d’un microcontrôleur PIC</p>
+        <a href="../index.html" class="btn-retour">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </header>
+
+    <main class="contenu">
+
+        <!-- Résumé technique -->
+        <section class="resume-tech">
+            <h2><i class="fas fa-microchip"></i> Résumé technique</h2>
+            <ul>
+        <li><strong>Technologies utilisées :</strong> Microcontrôleur PIC 16F88, langage C, capteur de température LM35, système de ventilation et de chauffage.</li>
+        <li><strong>Domaine d’application :</strong> Agriculture de précision.</li>
+        <li><strong>Objectif du projet :</strong> Assurer un contrôle optimal de la température afin de répondre aux besoins spécifiques des différentes espèces végétales.</li>
+        </section>
+
+        <br>
+
+        <!-- Présentation -->
+        <h2><i class="fas fa-info-circle"></i> Présentation du projet</h2>
+        <p>
+            Les serres représentent une technologie importante pour l'agriculture moderne.et cela en offrant des conditions climatiques idéal
+            Ce projet a pour objectif de Concevoir un système de contrôle intelligent, combinant ventilation et chau age via microcontrôleur, pour maintenir des conditions optimales de culture des bananes en serre en Algérie
+        </p>
+
+         <!-- Les défis -->
+        <h2><i class="fas fa-tasks"></i> Les Défis</h2>
+        <ol>
+            <li id="Partie">Partie Matériel</li>
+            <br>
+            <img src="./IMAGE/simulation.png" alt="" id="Proteus">
+            <p>Le projet est constitué des composant suivant :</p>
+            <ul>
+                <li>Le capteur LM35:</li>
+                <p> Un capteur de température analogique nécessite une alimentation régulée et stable.</p>
+                <section class="LM35">
+                    <img src="./IMAGE/LM35.png" alt="">
+                    <div class="branchement">
+                        <h2>Le Branchement:</h2>
+                        <ul>
+                            <li>La broche VIN : reliée avec l’alimentation.</li>
+                            <li>La broche VOUT : connectée avec la broche AN0 du microcontrôleur.</li>
+                            <li>La broche GND : reliée avec la masse.</li>
+                        </ul>
+                    </div>
+                </section>
+                <li>Le régulateur de tension L7805 : </li>
+                <p>Conçu pour fournir une tension de sortie régulée et constante de 5V à partir d'une source d'alimentation non régulée</p>
+                <section class="LM35">
+                    <img src="./IMAGE/regulateur.png" alt="">
+                    <div class="branchement">
+                        <h2>Le Branchement:</h2>
+                        <ul>
+                            <li>La broche INPUT : se relie avec la source d’alimentation extérieure et un condensateur.</li>
+                            <li>La broche OUTPUT : elle alimente le circuit, donc elle sera branchée avec le microcontrôleur, la led et les ventilateurs, ainsi qu'à un condensateur.</li>
+                            <li>La broche GROUND : connectée avec la masse.</li>
+                        </ul>
+                    </div>
+                </section> 
+                <li> le PIC 16F88 :</li>
+                <p>Un microcontrôleur pour le traitement des données </p>
+                <section class="LM35">
+                    <img src="./IMAGE/pic16F88.png" alt="">
+                    <div class="branchement">
+                        <h2>Le Branchement:</h2>
+                        <ul>
+                            <li>Un bouton poussoir configuré en mode pull-up est connecté avec la broche MCLR du pic16f88, afin de pouvoir réinitialiser manuellement le microcontrôleur en cas de bug.</li>
+                            <li>un condensateur de découplage entre la broche VSS et la broche VDD du microcontrôleur pour assurer la stabilité et la clarté du signal.</li>
+                         </ul>
+                    </div>
+                </section>
+                <li>Le TIP31:</li>
+                <p>Un transistor bipolaire NPN de puissance moyenne qui peut agir comme un interrupteur commandé</p>
+                <section class="LM35">
+                    <img src="./IMAGE/transistor.png" alt="">
+                    <div class="branchement">
+                        <h2>Le Branchement:</h2>
+                        <ul>
+                            <li>La broche collecteur : se relie au Fil – du ventilateur</li>
+                            <li>La broche base :  elle sera branchée avec le microcontrôleur.</li>
+                            <li>La broche émetteur : connectée avec la masse.</li>
+                        </ul> 
+                    </div>
+
+                </section>
+            </ul>
+        </ol>
+            <li id="Partie">Partie Logiciel</li>
+            <img src="./IMAGE/organigramme.png" alt="" id="organigramme">
+            <!-- EXPLICATION DU PROGRAMME -->
+            <section class="resume-tech">
+                <h2><i class="fas fa-microchip"></i>Explication du programme</h2>
+                <ol>
+                    <li>La déclaration et l’initialisation des variables</li>
+                    <li>Configuration de l’oscillateur interne du microcontrôleur pour une fréquence d’horloge de 4MHZ</li>
+                    <li>Initialisation du convertisseur ADC:convertir la valeur donnée par l’ADC en tension selon la formule suivante :</li> 
+                        <p id="formule"> Tension = (Valeur_analogique / Résolution_CAN) * Plage_de_tension</p>
+                        <ul>
+                            <li><strong>Valeur_analogique:</strong>valeur lue à partir du CAN  "valeur analogique= ADC_Read(0)"</li>
+                            <li><strong>Résolution_CAN :</strong>le niveaux de quantification disponibles pour la conversion "résolution de 10 bits donc 1024 niveaux".</li>
+                            <li><strong>Plage_de_tension :</strong>de "0 à 5 volts".</li>
+                        </ul>
+                    <li>Conversion de la tension analogique en une valeur de température en degrés Celsius.</li>
+                        <p id="formule"> "1 degré correspond à 10 mV (0.010V)"</p>
+                    <li>Les conditions: </li>
+                        <ul>
+                            <li>la température >  28°: CFAN1 s’allume</li>
+                            <li>la température < 16°: CFAN0 s’allume</li>
+                            <li>16°< la température > 28°:aucun ventilateur ne va s’allumer  </li>
+                        </ul>
+                </ol>
+            </section>
+            <!-- Résultats -->
+            <h2><i class="fas fa-chart-line"></i> Les Résultats:</h2>
+            <ul class="résultat">
+            <li>Test sur lab d'essai</li>
+            <img src="./IMAGE/test sur lab d'essai.png" alt="">
+            <br>
+            <li>Réalisation de la carte final</li>
+            <img src="./IMAGE/carte final.jpeg" alt="">
+
+
+             <!-- =====  PERSPECTIVES ===== -->
+            <section class="impact">
+                <h2><i class="fas fa-lightbulb"></i>  Perspectives</h2>
+                <ul>
+                    <li>L’intégration d’autres capteurs (humidité, luminosité, CO₂)</li>
+                    <li>Alimentation du système avec panneaux solaires</li>
+                    <li>Développement d’une interface utilisateur (LCD ou appli)</li>
+                    <li>Miniaturisation et optimisation du PCB pour la production</li>  
+                </ul>
+            </section>
+
+            <!-- Vidéo -->
+        <h2>Vidéo récapitulative</h2>
+        <video controls>
+            <source src="./IMAGE/WhatsApp Video 2025-08-16 at 13.51.23.mp4" type="video/mp4">
+        </video>
+
+    
+        
+
+         
+        
+
+
+
+       
+
+    </main>
+</body>
+</html>
