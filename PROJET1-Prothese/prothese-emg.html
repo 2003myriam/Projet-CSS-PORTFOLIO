@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prothèse bionique EMG</title>
+    <link rel="stylesheet" href="prothese-emg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="hero">
+        <h1>Commande avancée d’une prothèse de coude</h1>
+        <p>Utilisation des signaux EMG et de l'intelligence artificielle sur Raspberry Pi</p>
+        <a href="../index.html" class="btn-retour">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </header>
+
+    <main class="contenu">
+
+        <!-- Résumé technique -->
+        <section class="resume-tech">
+            <h2><i class="fas fa-microchip"></i> Résumé technique</h2>
+            <ul>
+                <li><strong>Technologies :</strong> Raspberry Pi 4, Python, SVM, INA122, TL082</li>
+                <li><strong>Domaine :</strong> Robotique médicale, contrôle myoélectrique</li>
+                <li><strong>Objectif :</strong> Détection et contrôle en temps réel des mouvements de flexion et extension du coude</li>
+            </ul>
+        </section>
+
+        <br>
+
+        <!-- Présentation -->
+        <h2><i class="fas fa-info-circle"></i> Présentation du projet</h2>
+        <p>
+            L’amputation d’un membre humain constitue un défi majeur dans la vie d’un individu.
+            Ce projet a pour objectif de mettre en œuvre l’apprentissage automatique sur Raspberry Pi
+            afin de détecter et contrôler les mouvements du coude d’une prothèse.
+        </p>
+
+        <!-- Les défis -->
+        <h2><i class="fas fa-tasks"></i> Les Défis</h2>
+        <ol>
+            <!-- Carte d'acquisition -->
+            <li>Conception d’une carte d’acquisition de données:</li>
+            <p>
+                La carte d’acquisition a été spécialement conçue pour la capture de signaux EMG
+                et est entièrement compatible avec le Raspberry Pi.
+                Elle se compose de plusieurs étages fonctionnels :
+            </p>
+            <section class="carte-pcb">
+                <img src="./IMAGE/pcb.png" alt="">
+                <div class="Explication-des-etages">
+                    <ol>
+                        <li>Préamplification: INA122 , Rg = 700Ω</li>
+                        <li>
+                            Filtre Passe-Bande actif: TL082
+                            <ul>
+                                <li>filtre passe-bas: R=82 kΩ , C=0.1 µF</li>
+                                <li>filtre passe-haut: R=1 kΩ , C=0.1 µF</li>
+                            </ul>
+                        </li>
+                        <li>Amplification : TL082 monté en amplificateur non inverseur : R=10kΩ et Rref=2MΩ</li>
+                        <li>Filtre notch : R=16kΩ (1), R=33kΩ (2), C=0.1 µF (4)</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Base de données -->
+            <li>Création d’une base de données dédiée:</li>
+            <p>
+                Un protocole précis a été suivi pour l’acquisition des signaux EMG.
+                Après nettoyage de la peau, les électrodes ont été placées sur le muscle
+                <em>brachioradial</em>, choisi pour son rôle de fléchisseur du coude.
+            </p>
+            <section class="base-de-donnée">
+                <img src="./IMAGE/collecte-de-donné.png" alt="">
+                <div class="Protocol">
+                    <h4>Position de départ</h4>
+                    <ul>
+                        <li>Sujet assis, dos bien droit.</li>
+                        <li>Bras relâchés le long du corps.</li>
+                        <li>Coude totalement étendu, avant-bras en position neutre.</li>
+                    </ul>
+
+                    <h4>Séquence des mouvements</h4>
+                    <p>Chaque mouvement est réalisé 3 fois, pendant 1 minute par répétition :</p>
+                    <p><strong>Flexion :</strong> flexion maximale du coude sans mouvement de l’avant-bras ; maintien 10 secondes.</p>
+                    <p><strong>Extension :</strong> extension complète de l’articulation sans mouvement de l’avant-bras ; maintien 10 secondes.</p>
+                </div>
+            </section>
+
+            <!-- IA -->
+            <li>Conception et entraînement d’un modèle d’IA</li>
+            <br>
+            <section class="IA">
+                <div class="images">
+                    <img src="./IMAGE/Capture d’écran 2025-08-10 190951.png" alt="">
+                    <img src="./IMAGE/Capture d’écran 2025-08-10 191048.png" alt="">
+                    <img src="./IMAGE/Capture d’écran 2025-08-10 191114.png" alt="">
+                </div>
+
+                <div class="tableau">
+                    <table border="1px">
+                        <tr>
+                            <th>Etiquittage</th>
+                            <th>Segmentation</th>
+                            <th>Sélection des caractéristiques</th>
+                            <th>Normalisation</th>
+                            <th>Le modèle</th>
+                        </tr>
+                        <tr>
+                            <td>classe 0: Flexion <br>classe 1: Extension</td>
+                            <td>250ms <br>70%</td>
+                            <td>
+                                Zero Crossing, Mobility, Médiane, Entropie, Kurtosis, Écart-type,
+                                Étendue (Range), Waveform Length, Skewness, Log Detector
+                            </td>
+                            <td>Standardisation</td>
+                            <td>Support vecteur machine</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Temps réel -->
+            <li>Implémentation en temps réel</li>
+            <section>
+                <p>
+                    Il existe plusieurs façons d’implémenter un système en temps réel.
+                    <a href="https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/#systemd"target="_blank">
+                        Le site suivant
+                    </a>
+                    présente quelques méthodes, dans ce projet nous avons utilisé la quatrième.
+                </p>
+            </section>
+        </ol>
+
+        <!-- Résultats -->
+        <h2><i class="fas fa-chart-line"></i> Les Résultats:</h2>
+        <ul class="résultat">
+            <li>Signal EMG final après traitement complet</li>
+            <img src="./IMAGE/signal emg final.png" alt="">
+
+            <li>Résultat après implémentation sur Raspberry Pi4</li>
+            <img src="./IMAGE/resultat sur raspbery.png" alt="">
+
+            <li>Résultats de collecte des données</li>
+            <p>
+                Dix-sept participants non amputés (5 filles et 12 garçons) ont été recrutés,
+                et voici <a href="https://drive.google.com/drive/folders/1lmuLGjHSUkaR9SZQxEDz0ottGhda98kr"target="_blank">la Base de données</a> collectées
+            </p>
+
+            <li>Performances du modèle IA</li>
+            <br>
+            <div class="images-titres">
+                <div class="bloc">
+                    <img src="./IMAGE/cercle de performance .png" alt="">
+                    <p>Représentation circulaire des performances du modèle SVM</p>
+                </div>
+                <div class="bloc">
+                    <img src="./IMAGE/matrice de confusion.png" alt="">
+                    <p>La matrice de confusion</p>
+                </div>
+                <div class="bloc">
+                    <img src="./IMAGE/courbe roc.png" alt="">
+                    <p>La courbe ROC</p>
+                </div>
+            </div>
+
+            <li>Accessibilité économique</li>
+            <img src="./IMAGE/accecibilité economique .png" alt="">
+        </ul>
+        
+
+        <!-- =====  PERSPECTIVES ===== -->
+    <section class="impact">
+        <h2><i class="fas fa-lightbulb"></i>  Perspectives</h2>
+        <ul>
+            <li>L’intégration d’autres capteurs  </li>
+            <li>L’utilisation d’un PCB flexible</li>
+            <li>Miniaturisation de la carte d’acquisition</li>
+            <li>L’utilisation de doubles canaux pour l'ajout de nouveaux mouvements (supination/pronation)</li>
+        </ul>
+    </section>
+
+
+        <!-- Vidéo -->
+        <h2>Vidéo récapitulative</h2>
+        <video controls>
+            <source src="./IMAGE/Média1.mp4" type="video/mp4">
+        </video>
+
+    </main>
+</body>
+</html>
