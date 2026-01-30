@@ -1,0 +1,112 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Edu+SA+Hand:wght@400..700&family=Gravitas+One&family=Playwrite+GB+J+Guides:ital@0;1&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    background-color: #14213d;
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+/* ----- CONTENEUR GÉNÉRAL ----- */
+.contenu {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+ 
+
+/* ----- HERO ----- */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(rgba(20, 33, 61, 0.9), rgba(20, 33, 61, 0.9)), 
+                url('header-bg.jpg') center/cover;
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #e0e0e0;
+}
+/* ----- BOUTON RETOUR ----- */
+.btn-retour {
+    position: absolute; /* ou fixed si tu veux qu'il reste visible au scroll */
+    top: 10px;
+    left: 10px;
+    padding: 8px 16px;
+    border: 1px solid #ffff03;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn-retour:hover {
+    background-color: #ffff03;
+    color: #14213d;
+}
+
+/* ----- RÉSUMÉ TECHNIQUE ----- */
+.resume-tech {
+    background-color: #1f2a48;
+    padding: 20px;
+    margin: 20px auto;
+    border-left: 5px solid #ffff03;
+    max-width: 900px;
+    border-radius: 8px;
+}
+
+.resume-tech ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resume-tech li {
+    margin-bottom: 8px;
+}
+
+/* ----- SECTIONS ----- */
+section {
+    margin-bottom: 30px;
+    border-left: 5px solid transparent;
+    padding-left: 15px;
+    transition: border-color 0.4s ease;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 1000px;
+}
+
+section:hover {
+    border-color: #ffff03; /* ligne jaune au survol */
+}
+
+/* ----- TITRES & TEXTES ----- */
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffff03;
+}
+
+h2 {
+    color: #ffff03;
+}
+
+p {
+    margin: 30px;
+}
+
+p strong {
+    color: #ffff03;
+}
+a {
+  color: #ffff03;
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ffff03;
+}
